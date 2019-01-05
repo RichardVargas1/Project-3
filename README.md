@@ -6,5 +6,11 @@
 
 * Blockers: Being able to display information. I have had a difficult time when it has come to displaying pulled information, on a screen (i.e., scraping articles) I do not want to struggle doing that again, so I feel this project can help me tackle those difficulties head-on.
 
-* Technologies/Websites I Would Like to Use: YouTube, ESPN API
-* Libraries: Undecided
+* Technology Stack:
+    1. React.js
+    2. MongoDB
+    3. Express
+    4. Node.js
+    5. Axios
+
+* Other Tech: YouTube, ESPN API
