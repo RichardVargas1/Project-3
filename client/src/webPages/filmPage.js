@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 
-class homePage extends Component {
+class filmPage extends Component {
 
   render() {
     return (
@@ -24,4 +24,4 @@ class homePage extends Component {
   }
 }
 
-export default homePage;
+export default filmPage;

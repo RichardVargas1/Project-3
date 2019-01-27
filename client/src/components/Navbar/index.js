@@ -52,10 +52,10 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <Link
                                 onClick={this.toggleNavbar}
-                                className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
-                                to="/"
+                                className={window.location.pathname === "/politics" ? "nav-link active" : "nav-link"}
+                                to="/politics"
                             >
-                                Political
+                                Politics
                             </Link>
                         </li>
                         <li className="nav-item">
