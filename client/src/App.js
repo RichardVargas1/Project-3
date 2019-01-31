@@ -23,7 +23,7 @@ class App extends Component {
         selectedVideo: null
     };
 
-    this.videoSearch('React Tutorials');
+    this.videoSearch('Politics');
 }
 
 videoSearch(searchTerm) {
