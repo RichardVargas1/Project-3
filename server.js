@@ -3,17 +3,15 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 // const MongoStore = require('connect-mongo')(session)
 const PORT = process.env.PORT || 3001;
-const passport = require('./passport');
-const routes = require('./routes/api');
+const passport = require('./passportAuth');
+const routes = require("./routes");
 const session = require('express-session')
-const user = require('./routes/user');
 const app = express();
 
 // Sessions
 app.use(
 	session({
-		secret: 'youtube-fun', //pick a random string to make the hash that is generated secure
-		// store: new MongoStore({ mongooseConnection: dbConnection }),
+		secret: 'youtube-fun',
 		resave: false, //required
 		saveUninitialized: false //required
 	})
@@ -31,9 +29,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Add routes, both API and view
-// app.use(routes);
-
 // Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/speechshare",
@@ -43,13 +38,8 @@ mongoose.connect(
   }
 );
 
-// Define API routes here
-
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// Add routes, both API and view
+app.use(routes);
 
 // Initiating the API server
 app.listen(PORT, () => {

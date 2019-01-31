@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
     // ADD VALIDATION
     userAuth.findOne({ username: username }, (err, user) => {
         if (err) {
-            console.log('User.js post error: ', err)
+            console.log('userAuth.js post error: ', err)
         } else if (user) {
             res.json({
                 error: `Sorry, already a user with the username: ${username}`
@@ -32,8 +32,7 @@ router.post('/', (req, res) => {
 router.post(
     '/login',
     function (req, res, next) {
-        console.log('routes/user.js, login, req.body: ');
-        console.log(req.body)
+        console.log('routes/userAuth.js, login, req.body: ');
         next()
     },
     passport.authenticate('local'),
@@ -48,7 +47,6 @@ router.post(
 
 router.get('/', (req, res, next) => {
     console.log('===== user!!======')
-    console.log(req.user)
     if (req.user) {
         res.json({ user: req.user })
     } else {

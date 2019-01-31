@@ -1,9 +1,10 @@
 const User = require('../models/userAuth')
-const localPass = require('passport-local').Pass
+const LocalStrategy = require('passport-local').Strategy
 
-const pass = new localPass(
+const strategy = new LocalStrategy(
 	{
-		usernameField: 'username' // DEFAULT USERNAME
+		usernameField: 'username' 
+		// not necessary, DEFAULT
 	},
 	function(username, password, done) {
 		User.findOne({ username: username }, (err, user) => {
@@ -21,4 +22,4 @@ const pass = new localPass(
 	}
 )
 
-module.exports = pass
+module.exports = strategy
