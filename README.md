@@ -13,7 +13,11 @@
     4. Node.js
     5. Axios
 
-* Other Tech: YouTube, ESPN API
+* Other Tech: YouTube.
+
+* App Updates (As of 1/30/2019)
+ - I have abondoned using the ESPN API. According to their website: (http://www.espn.com/static/apis/devcenter/blog/read/publicretirement.html), they will no longer be issuing public API keys.
+ - I am able to communicate with YouTube however. That is definitely a plus.
 
 # Heroku Link
 https://rvspeechshare.herokuapp.com/
