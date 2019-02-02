@@ -1,81 +1,88 @@
 import React, { Component } from "react";
+import axios from 'axios'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import homePage from "./webPages/homePage";
+// import homePage from "./webPages/homePage";
 import politicsPage from "./webPages/politicsPage";
 import sportsPage from "./webPages/sportsPage";
 import filmPage from "./webPages/filmPage";
 import Navbar from "./components/Navbar";
-import SearchBar from './components/Search';
-import youtubeSearch from 'youtube-api-search';
-import VideoList from './components/video-list';
-import VideoDetail from './components/video-detail'
-// import key from "./";
-import logo from "./logo.svg";
+import SignUp from "./components/Sign-Up";
+import Login from "./components/Login";
+import Footer from "./components/Footer";
+// import SearchBar from './components/Search';
+// import youtubeSearch from 'youtube-api-search';
+// import VideoList from './components/video-list';
+// import VideoDetail from './components/video-detail'
 import "./App.css";
 
-const API_KEY = 'AIzaSyDpkI-jTmCIWJ0-ZljHhNo3XiIFj4-OvPg';
+// import key from "./";
+// const API_KEY = 'AIzaSyDpkI-jTmCIWJ0-ZljHhNo3XiIFj4-OvPg';
 class App extends Component {
-  constructor(props){
-    super(props);
+  constructor() {
+    super()
+    this.state = {
+      userLoggedIn: false,
+      username: null
+    }
 
-    this.state = { 
-        videos: [],
-        selectedVideo: null
-    };
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.updateUser = this.updateUser.bind(this)
+  }
 
-    this.videoSearch('Politics');
-}
+  componentDidMount() {
+    this.getUser()
+  }
 
-videoSearch(searchTerm) {
-  youtubeSearch({key: API_KEY, term: searchTerm}, (data) => {
-    console.log(data);
-      this.setState({ 
-          videos: data,
-          selectedVideo: data[0]
-      });
-  });
+  updateUser(userObject) {
+    this.setState(userObject)
+  }
 
-}
+  getUser() {
+    axios.get('/user/').then(response => {
+      if (response.data.user) {
+        this.setState({
+          userLoggedIn: true,
+          username: response.data.user.username
+        })
+      } else {
+        this.setState({
+          userLoggedIn: false,
+          username: null
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <div>
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={homePage} />
-              <Route exact path="/politics" component={politicsPage} />
-              <Route exact path="/sports" component={sportsPage} />
-              <Route exact path="/film" component={filmPage} />
-            </Switch>
-            <img src={logo} className="App-logo" alt="logo" />
+          <div className="App">
+            <Navbar updateUser={this.updateUser} userLoggedIn={this.state.userLoggedIn} />
+            {/* <Route
+              exact path="/"
+              component={Home} /> */}
+            <Route
+              path="/login"
+              render={() =>
+                <Login
+                  updateUser={this.updateUser}
+                />}
+            />
+            <Route
+              path="/signup"
+              render={() =>
+                <SignUp
+                  SignUp={this.SignUp}
+                />}
+            />
+            <Footer />
           </div>
         </Router>
-        <SearchBar onSearchTermChange={searchTerm => this.videoSearch(searchTerm)}/>
-        <VideoDetail video={this.state.selectedVideo}/>
-        <VideoList 
-          onVideoSelect={userSelected => this.setState({selectedVideo: userSelected})}
-          videos={this.state.videos} />
       </div>
     );
   }
 }
-
-// function App() {
-//   return (
-//     <Router>
-//       <div>
-//         <Navbar />
-//         <Switch>
-//           <Route exact path="/" component={homePage} />
-//           <Route exact path="/politics" component={politicsPage} />
-//           <Route exact path="/sports" component={sportsPage} />
-//           <Route exact path="/film" component={filmPage} />
-//         </Switch>
-//         <img src={logo} className="App-logo" alt="logo" />
-//       </div>
-//     </Router>
-//   );
-// }
 
 export default App;

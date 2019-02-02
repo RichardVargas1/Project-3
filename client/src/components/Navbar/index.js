@@ -1,41 +1,37 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 import "./style.css";
 
 class Navbar extends Component {
-    state = {
-        open: false,
-        width: window.innerWidth
-    };
-
-    updateWidth = () => {
-        const newState = { width: window.innerWidth };
-
-        if (this.state.open && newState.width > 991) {
-            newState.open = false;
-        }
-
-        this.setState(newState);
-    };
-
-    toggleNavbar = () => {
-        this.setState({ open: !this.state.open });
-    };
-
-    componentDidMount() {
-        window.addEventListener("resize", this.updateWidth);
+    constructor() {
+        super()
+        this.logoutApp = this.logoutApp.bind(this)
     }
 
-    componentWillUnMount() {
-        window.removeEventListener("resize", this.updateWidth);
+    logoutApp(event) {
+        event.preventDefault()
+        axios.post('/user/logoutApp').then(response => {
+            console.log(response.data)
+            if (response.status === 200) {
+                this.props.updateUser({
+                    loggedInApp: false,
+                    username: null
+                })
+            }
+        }).catch(error => {
+            console.log('There has been an error in logging out')
+        })
     }
 
     render() {
+        const loggedInApp = this.props.loggedInApp;
+        // rendering the links for the website in nav
         return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
+            <nav className="navbar navbar-expand-sm bg-light navbar-light">
                 <Link className="navbar-brand" to="/">
                     Speech Share
-                </Link>
+                 </Link>
                 <button
                     onClick={this.toggleNavbar}
                     className="navbar-toggler"
@@ -47,40 +43,38 @@ class Navbar extends Component {
                 >
                     <span className="navbar-toggler-icon" />
                 </button>
-                <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link
-                                onClick={this.toggleNavbar}
-                                className={window.location.pathname === "/politics" ? "nav-link active" : "nav-link"}
-                                to="/politics"
-                            >
-                                Politics
+                {loggedInApp ? (
+                    <section className="navbar-section">
+                        <Link to="/speechforum" className="btn btn-link ml-5">
+                            <span className="text-secondary">Speeches</span>
+                        </Link>
+                        <Link to="#" className="btn btn-link text-secondary" onClick={this.logoutApp}>
+                            <span className="text-secondary">Logout</span></Link>
+                    </section>
+                ) : (
+                        <section className="navbar-section">
+                            <Link to="/" className="btn btn-link text-secondary ml-5">
+                                <span className="text-secondary">Home</span>
                             </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                onClick={this.toggleNavbar}
-                                className={window.location.pathname === "/sports" ? "nav-link active" : "nav-link"}
-                                to="/sports"
-                            >
-                                Sports
+                            <Link to="/login" className="btn btn-link text-secondary">
+                                <span className="text-secondary">Login</span>
                             </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                onClick={this.toggleNavbar}
-                                className={window.location.pathname === "/film" ? "nav-link active" : "nav-link"}
-                                to="/film"
-                            >
-                                Film
+                            <Link to="/sign-up" className="btn btn-link">
+                                <span className="text-secondary">Sign-Up</span>
                             </Link>
-                        </li>
-                    </ul>
-                </div>
+                            <Link to="/topics" className="btn btn-link">
+                                <span className="text-secondary">Topics</span>
+                            </Link>
+                            <Link to="/other" className="btn btn-link">
+                                <span className="text-secondary">Other</span>
+                            </Link>
+                        </section>
+                    )}
             </nav>
+
         );
+
     }
 }
 
-export default Navbar;
+export default Navbar
