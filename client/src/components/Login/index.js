@@ -16,7 +16,7 @@ class Login extends Component {
     }
 
     // handles changes taking effect
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -57,39 +57,39 @@ class Login extends Component {
         } else {
             return (
                <div className="LoginContainer"> 
-                <div className="loginForm">
-                    <h4>Login</h4>
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                                <label className="form-label" htmlFor="username"></label>
-                                <input className="form-input"
-                                    placeholder="Enter Username"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
-                        </div>
-                        <div className="form-group">
-                                <label className="form-label" htmlFor="password"></label>
-                                <input className="form-input"
-                                    placeholder="Enter Password"
-                                    type="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-                        </div>
-                        <div className="form-group ">
-                            <button
-                                className="btn btn-primary"
-                                id="loginButton"
-                                onClick={this.handleSubmit}
-                                type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
+                    <div className="loginForm">
+                        <h4>Login</h4>
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                                    <label className="form-label" htmlFor="username"></label>
+                                    <input className="form-input"
+                                        placeholder="Enter Username"
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        value={this.state.username}
+                                        onChange={this.handleChange}
+                                    />
+                            </div>
+                            <div className="form-group">
+                                    <label className="form-label" htmlFor="password"></label>
+                                    <input className="form-input"
+                                        placeholder="Enter Password"
+                                        type="password"
+                                        name="password"
+                                        value={this.state.password}
+                                        onChange={this.handleChange}
+                                    />
+                            </div>
+                            <div className="form-group ">
+                                <button
+                                    className="btn btn-primary"
+                                    id="loginButton"
+                                    onClick={this.handleSubmit}
+                                    type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                </div> 
             )
         }

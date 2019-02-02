@@ -71,7 +71,7 @@ class App extends Component {
                 />}
             />
             <Route
-              path="/signup"
+              path="/sign-up"
               render={() =>
                 <SignUp
                   SignUp={this.SignUp}
