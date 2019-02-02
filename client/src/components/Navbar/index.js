@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import politicsPage from "../../webPages/politicsPage";
+import sportsPage from "../../webPages/sportsPage";
+import filmsPage from "../../webPages/filmsPage";
 import "./style.css";
 
 class Navbar extends Component {
@@ -56,17 +59,20 @@ class Navbar extends Component {
                             <Link to="/" className="btn btn-link text-secondary ml-5">
                                 <span className="text-secondary">Home</span>
                             </Link>
+                            <Link to="/politics" className="btn btn-link text-secondary" component={politicsPage}>
+                                <span className="text-secondary">Politics</span>
+                            </Link>
+                            <Link to="/sports" className="btn btn-link text-secondary" component={sportsPage}>
+                                <span className="text-secondary">Sports</span>
+                            </Link>
+                            <Link to="/films" className="btn btn-link text-secondary" component={filmsPage}>
+                                <span className="text-secondary">Films</span>
+                            </Link>
                             <Link to="/login" className="btn btn-link text-secondary">
                                 <span className="text-secondary">Login</span>
                             </Link>
                             <Link to="/sign-up" className="btn btn-link">
                                 <span className="text-secondary">Sign-Up</span>
-                            </Link>
-                            <Link to="/topics" className="btn btn-link">
-                                <span className="text-secondary">Topics</span>
-                            </Link>
-                            <Link to="/other" className="btn btn-link">
-                                <span className="text-secondary">Other</span>
                             </Link>
                         </section>
                     )}

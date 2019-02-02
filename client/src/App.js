@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import homePage from "./webPages/homePage";
-import politicsPage from "./webPages/politicsPage";
-import sportsPage from "./webPages/sportsPage";
-import filmPage from "./webPages/filmPage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import SignUp from "./components/Sign-Up";
+import Home from './webPages/homePage';
+import Politics from './webPages/politicsPage';
+import Sports from './webPages/sportsPage';
+import Films from './webPages/filmsPage';
 import Login from "./components/Login";
+import SignUp from "./components/Sign-Up";
 import Footer from "./components/Footer";
 // import SearchBar from './components/Search';
 // import youtubeSearch from 'youtube-api-search';
@@ -60,9 +60,34 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar updateUser={this.updateUser} userLoggedIn={this.state.userLoggedIn} />
-            {/* <Route
-              exact path="/"
-              component={Home} /> */}
+            <Route
+              path="/"
+              render={() =>
+                <Home
+                  loggedIn={this.state.loggedIn}
+                />}
+            />
+            <Route
+              path="/politics"
+              render={() =>
+                <Politics
+                  loggedIn={this.state.loggedIn}
+                />}
+            />
+            <Route
+              path="/sports"
+              render={() =>
+                <Sports
+                  loggedIn={this.state.loggedIn}
+                />}
+            />
+            <Route
+              path="/films"
+              render={() =>
+                <Films
+                  loggedIn={this.state.loggedIn}
+                />}
+            />
             <Route
               path="/login"
               render={() =>

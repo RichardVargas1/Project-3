@@ -72,7 +72,7 @@ class SignUp extends Component {
                             <div className="form-group">
                                 <label className="form-label" htmlFor="password"></label>
                                 <input className="form-input"
-                                    placeholder="Type Password"
+                                    placeholder="Enter Password"
                                     type="password"
                                     name="password"
                                     value={this.state.userPassword}
