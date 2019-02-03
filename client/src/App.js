@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from 'axios'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from './webPages/homePage';
@@ -8,11 +7,13 @@ import Sports from './webPages/sportsPage';
 import Films from './webPages/filmsPage';
 import Login from "./components/Login";
 import SignUp from "./components/Sign-Up";
+import PoliticsGenres from "./components/SpeechGenres/politics";
 import Footer from "./components/Footer";
 // import SearchBar from './components/Search';
 // import youtubeSearch from 'youtube-api-search';
 // import VideoList from './components/video-list';
 // import VideoDetail from './components/video-detail'
+import axios from 'axios'
 import "./App.css";
 
 // import key from "./";
@@ -64,28 +65,28 @@ class App extends Component {
               path="/"
               render={() =>
                 <Home
-                  loggedIn={this.state.loggedIn}
+                  userloggedIn={this.state.userloggedIn}
                 />}
             />
             <Route
               path="/politics"
               render={() =>
                 <Politics
-                  loggedIn={this.state.loggedIn}
+                  userloggedIn={this.state.userloggedIn}
                 />}
             />
             <Route
               path="/sports"
               render={() =>
                 <Sports
-                  loggedIn={this.state.loggedIn}
+                  userloggedIn={this.state.userloggedIn}
                 />}
             />
             <Route
               path="/films"
               render={() =>
                 <Films
-                  loggedIn={this.state.loggedIn}
+                  userloggedIn={this.state.userloggedIn}
                 />}
             />
             <Route
@@ -100,6 +101,13 @@ class App extends Component {
               render={() =>
                 <SignUp
                   SignUp={this.SignUp}
+                />}
+            />
+            <Route
+              path="/politics"
+              render={() =>
+                <PoliticsGenres
+                  userloggedIn={this.state.userloggedIn}
                 />}
             />
             <Footer />
