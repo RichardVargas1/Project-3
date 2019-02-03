@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
-// import SpeechAdd from '../Speech-Add/index';
+import SpeechAdd from '../Speech-Add/index';
 import "./style.css"
 
 
@@ -27,15 +27,15 @@ class Films extends Component {
         const userLoggedIn = this.props.userLoggedIn;
         return (
             <Fragment>
-                <div className="SpeechGenres">
+                {/* <div className="SpeechGenres">
                     <ul>
-                        <li><Link to="/speech-forum/politics">Politicss</Link></li>
-                        <li><Link to="/speech-forum/sports">Sports</Link></li>
+                        <li><Link to="/politics">Politics</Link></li>
+                        <li><Link to="/sports">Sports</Link></li>
                     </ul>
-                </div>
-                <div className="jumbotron jumbotron-fluid" id="filmsJumbo">
+                </div> */}
+                <div id="filmsJumbo">
                     <div className="container">
-                        <h1 className="display-4 text-center">Political Speeches</h1>
+                        <h1 className="display-4 text-center">Film Speeches</h1>
                         <p className="lead text-center">Speeches You'll find on Facebook, Shared From Your Relative.</p>
                     </div>
                 </div>
@@ -48,10 +48,9 @@ class Films extends Component {
                             <Link to="/login" className="btn btn-warning float-right" role="button">Create New Speech</Link>
                         )}
                         </div>
-                        {/* <div className="posts col-md-12">
+                        <div className="posts col-md-12">
                             <ul>
                                 {this.state.speeches.map(speech => (
-
                                     <SpeechAdd
                                         key={speech._id}
                                         id={speech._id}
@@ -60,7 +59,7 @@ class Films extends Component {
                                     />
                                 ))}
                             </ul>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </Fragment>

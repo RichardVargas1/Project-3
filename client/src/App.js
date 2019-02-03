@@ -106,21 +106,21 @@ class App extends Component {
                 />}
             />
             <Route
-              path="/politicsgenre"
+              path="/politics"
               render={() =>
                 <PoliticsGenre
                   userloggedIn={this.state.userloggedIn}
                 />}
             />
             <Route
-              path="/sportsgenre"
+              path="/sports"
               render={() =>
                 <SportsGenre
                   userloggedIn={this.state.userloggedIn}
                 />}
             />
             <Route
-              path="/filmsgenre"
+              path="/films"
               render={() =>
                 <FilmsGenre
                   userloggedIn={this.state.userloggedIn}

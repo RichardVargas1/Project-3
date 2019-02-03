@@ -8,10 +8,10 @@ class FilmsPage extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-            <h1 className="text-center">
+            {/* <h1 className="text-center">
               <strong>Famous Film Speeches</strong>
             </h1>
-            <h2 className="text-center">Browse through this webpage for some full text speeches, and their videos.</h2>
+            <h2 className="text-center">Browse through this webpage for some full text speeches, and their videos.</h2> */}
           </Col>
         </Row>
       </Container>

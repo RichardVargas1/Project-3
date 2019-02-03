@@ -1,7 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import {Link} from 'react-router-dom'
-import axios from 'axios';
-// import SpeechAdd from '../Speech-Add/index';
+import axios from 'axios';import SpeechAdd from '../Speech-Add/index';
 import "./style.css"
 
 
@@ -27,15 +26,15 @@ class Sports extends Component {
         const userLoggedIn = this.props.userLoggedIn;
         return (
             <Fragment>
-                <div className="SpeechGenres">
-                    <ul>
-                        <li><Link to="/speech-forum/films">Films</Link></li>
-                        <li><Link to="/speech-forum/politics">Politicss</Link></li>
-                    </ul>
-                </div>
-                <div className="jumbotron jumbotron-fluid" id="sportsJumbo">
+                {/* <div className="SpeechGenres">
+                    <ul>    
+                        <li><Link to="/films">Films</Link></li>
+                        <li><Link to="/politics">Politics</Link></li>
+                    </ul>                
+                </div> */}
+                <div id="sportsJumbo">
                     <div className="container">
-                        <h1 className="display-4 text-center">Political Speeches</h1>
+                        <h1 className="display-4 text-center">Sports Speeches</h1>
                         <p className="lead text-center">Go Sports Team!</p>
                     </div>
                 </div>
@@ -48,7 +47,7 @@ class Sports extends Component {
                             <Link to="/login" className="btn btn-warning float-right" role="button">Create New Speech</Link>
                         )}
                         </div>
-                        {/* <div className="posts col-md-12">
+                        <div className="posts col-md-12">
                             <ul>
                                 {this.state.speeches.map(speech => (
 
@@ -60,7 +59,7 @@ class Sports extends Component {
                                     />
                                 ))}
                             </ul>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </Fragment>
