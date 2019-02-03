@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
-import SpeechAdd from '../Speech-Add/index';
+// import SpeechAdd from '../Speech-Add/index';
 import "./style.css"
 
 
@@ -16,7 +16,7 @@ class Films extends Component {
     }
 
     getFilms = () => {
-        axios.get("/drama").then(res => {
+        axios.get("/films").then(res => {
             this.setState({ speeches: res.data })
         })
         console.log(this.state.speeches)
@@ -48,7 +48,7 @@ class Films extends Component {
                             <Link to="/login" className="btn btn-warning float-right" role="button">Create New Speech</Link>
                         )}
                         </div>
-                        <div className="posts col-md-12">
+                        {/* <div className="posts col-md-12">
                             <ul>
                                 {this.state.speeches.map(speech => (
 
@@ -60,7 +60,7 @@ class Films extends Component {
                                     />
                                 ))}
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </Fragment>
