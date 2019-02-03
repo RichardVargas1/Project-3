@@ -7,7 +7,9 @@ import Sports from './webPages/sportsPage';
 import Films from './webPages/filmsPage';
 import Login from "./components/Login";
 import SignUp from "./components/Sign-Up";
-import PoliticsGenres from "./components/SpeechGenres/politics";
+import PoliticsGenre from "./components/SpeechGenres/politics";
+import SportsGenre from "./components/SpeechGenres/sports";
+import FilmsGenre from "./components/SpeechGenres/films";
 import Footer from "./components/Footer";
 // import SearchBar from './components/Search';
 // import youtubeSearch from 'youtube-api-search';
@@ -104,9 +106,23 @@ class App extends Component {
                 />}
             />
             <Route
-              path="/politics"
+              path="/politicsgenre"
               render={() =>
-                <PoliticsGenres
+                <PoliticsGenre
+                  userloggedIn={this.state.userloggedIn}
+                />}
+            />
+            <Route
+              path="/sportsgenre"
+              render={() =>
+                <SportsGenre
+                  userloggedIn={this.state.userloggedIn}
+                />}
+            />
+            <Route
+              path="/filmsgenre"
+              render={() =>
+                <FilmsGenre
                   userloggedIn={this.state.userloggedIn}
                 />}
             />
