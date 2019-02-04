@@ -10,7 +10,8 @@
     "client": "cd client && yarn run start",
     "install": "cd client && yarn install",
     "build": "cd client && yarn run build",
-    "heroku-postbuild": "yarn run build"
+    "heroku-postbuild": "yarn run build",
+    "seedDB": "yarn start"
   },
   "author": "",
   "license": "ISC",

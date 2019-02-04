@@ -1,14 +1,14 @@
 import React, { Fragment, Component } from 'react';
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import axios from 'axios';
 import SpeechAdd from '../Speech-Add/index';
 import "./style.css"
 
 
-class Films extends Component {
+class FilmsDB extends Component {
 
     state = {
-        speeches: []
+        filmsDB: []
     }
 
     componentDidMount() {
@@ -16,15 +16,15 @@ class Films extends Component {
     }
 
     getFilms = () => {
-        axios.get("/films").then(res => {
-            this.setState({ speeches: res.data })
+        axios.get("/api/speech/films").then(res => {
+            this.setState({ filmsDB: res.data })
         })
-        console.log(this.state.speeches)
+        console.log(this.state.filmsDB)
     }
 
 
     render() {
-        const userLoggedIn = this.props.userLoggedIn;
+        // const userLoggedIn = this.props.userLoggedIn;
         return (
             <Fragment>
                 {/* <div className="SpeechGenres">
@@ -41,21 +41,22 @@ class Films extends Component {
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="createNew float-right">
+                        {/* <div className="createNew float-right">
                         {userLoggedIn ? (
                             <Link to="/newspeech" className="btn btn-warning float-right" role="button">Create New Speech</Link>
                         ) : (
                             <Link to="/login" className="btn btn-warning float-right" role="button">Create New Speech</Link>
                         )}
-                        </div>
+                        </div> */}
                         <div className="posts col-md-12">
                             <ul>
-                                {this.state.speeches.map(speech => (
+                                {this.state.filmsDB.map(films => (
                                     <SpeechAdd
-                                        key={speech._id}
-                                        id={speech._id}
-                                        title={speech.title}
-                                        author={speech.author}
+                                    id={films.id}
+                                    key={films.id}
+                                    title={films.title}
+                                    author={films.author}
+                                    synopsis={films.synopsis}
                                     />
                                 ))}
                             </ul>
@@ -67,4 +68,4 @@ class Films extends Component {
     }
 }
 
-export default Films;
+export default FilmsDB;

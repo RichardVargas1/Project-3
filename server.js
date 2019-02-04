@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 3001;
 const passport = require('./passportAuth');
 const routes = require("./routes");
 const session = require('express-session')
+const dbArray = require('./scripts/seededDatabase');
+const speechModel = require('./models/speech');
 const app = express();
 
 // Sessions
@@ -41,7 +43,14 @@ mongoose.connect(
 // Add routes, both API and view
 app.use(routes);
 
+// checking array require
+// console.log(dbArray);
+
+speechModel.remove({})
+
+speechModel.create(dbArray).then(data =>{console.log(data)})
+
 // Initiating the API server
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`🌎 ==> API server now on port ${PORT}!`); 
 });

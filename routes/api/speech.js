@@ -1,7 +1,7 @@
 
 const express = require('express')
 const router = express.Router()
-const speech = require('../../models/speech')
+const Speech = require('../../models/speech')
 
 router.post("/post", (req,res) => {
     const {title, author, genre, description} = req.body
@@ -24,14 +24,14 @@ router.get("/all", (req,res) => {
 })
 
 router.get("/politics", (req,res) => {
-    Speech.find({genre: "funny"}).sort({date: -1}).then(results => res.json(results))
+    Speech.find({genre: "politics"}).sort({date: -1}).then(results => res.json(results))
 })
 
 router.get("/sports", (req,res) => {
     Speech.find({genre: "sports"}).sort({date: -1}).then(results => res.json(results))
 })
 
-router.get("/film", (req,res) => {
+router.get("/films", (req,res) => {
     Speech.find({genre: "film"}).sort({date: -1}).then(results => res.json(results))
 })
 

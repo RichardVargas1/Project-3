@@ -1,14 +1,14 @@
 import React, { Fragment, Component } from 'react';
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import axios from 'axios';
 import SpeechAdd from '../Speech-Add/index';
 import "./style.css"
 
 
-class Politics extends Component {
+class PoliticsDB extends Component {
 
     state = {
-        speeches: []
+        politicsDB: []
     }
 
     componentDidMount() {
@@ -16,15 +16,15 @@ class Politics extends Component {
     }
 
     getPolitics = () => {
-        axios.get("/politics").then(res => {
-            this.setState({ speeches: res.data })
+        axios.get("/api/speech/politics").then(res => {
+            this.setState({ politicsDB: res.data })
         })
-        console.log(this.state.speeches)
+        console.log(this.state.politicsDB)
     }
 
 
     render() {
-        const userLoggedIn = this.props.userLoggedIn;
+        // const userLoggedIn = this.props.userLoggedIn;
         return (
             <Fragment>
                 {/* <div className="SpeechGenres">
@@ -41,22 +41,22 @@ class Politics extends Component {
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="createNew float-right">
+                        {/* <div className="createNew float-right">
                         {userLoggedIn ? (
                             <Link to="/newspeech" className="btn btn-warning float-right" role="button">Create New Speech</Link>
                         ) : (
                             <Link to="/login" className="btn btn-warning float-right" role="button">Create New Speech</Link>
                         )}
-                        </div>
+                        </div> */}
                         <div className="posts col-md-12">
                             <ul>
-                                {this.state.speeches.map(speech => (
-
+                                {this.state.politicsDB.map(politics => (
                                     <SpeechAdd
-                                        key={speech._id}
-                                        id={speech._id}
-                                        title={speech.title}
-                                        author={speech.author}
+                                        id={politics.id}
+                                        key={politics.id}
+                                        title={politics.title}
+                                        author={politics.author}
+                                        synopsis={politics.synopsis}
                                     />
                                 ))}
                             </ul>
@@ -68,4 +68,4 @@ class Politics extends Component {
     }
 }
 
-export default Politics;
+export default PoliticsDB;

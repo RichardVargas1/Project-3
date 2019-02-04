@@ -1,13 +1,13 @@
 import React, { Fragment, Component } from 'react';
-import {Link} from 'react-router-dom'
-import axios from 'axios';import SpeechAdd from '../Speech-Add/index';
+import { Link } from 'react-router-dom'
+import axios from 'axios'; import SpeechAdd from '../Speech-Add/index';
 import "./style.css"
 
 
-class Sports extends Component {
+class SportsDB extends Component {
 
     state = {
-        speeches: []
+        SportsDB: []
     }
 
     componentDidMount() {
@@ -15,15 +15,15 @@ class Sports extends Component {
     }
 
     getSports = () => {
-        axios.get("/sports").then(res => {
-            this.setState({ speeches: res.data })
+        axios.get("/api/speech/sports").then(res => {
+            this.setState({ sportsDB: res.data })
         })
-        console.log(this.state.speeches)
+        console.log(this.state.sportsDB)
     }
 
 
     render() {
-        const userLoggedIn = this.props.userLoggedIn;
+        // const userLoggedIn = this.props.userLoggedIn;
         return (
             <Fragment>
                 {/* <div className="SpeechGenres">
@@ -40,22 +40,22 @@ class Sports extends Component {
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="createNew float-right">
-                        {userLoggedIn ? (
-                            <Link to="/newspeech" className="btn btn-warning float-right" role="button">Create New Speech</Link>
-                        ) : (
-                            <Link to="/login" className="btn btn-warning float-right" role="button">Create New Speech</Link>
-                        )}
-                        </div>
+                        {/* <div className="createNew float-right">
+                            {userLoggedIn ? (
+                                <Link to="/newspeech" className="btn btn-warning float-right" role="button">Create New Speech</Link>
+                            ) : (
+                                    <Link to="/login" className="btn btn-warning float-right" role="button">Create New Speech</Link>
+                                )}
+                        </div> */}
                         <div className="posts col-md-12">
                             <ul>
-                                {this.state.speeches.map(speech => (
-
+                                {this.state.sportsDB.map(sports => (
                                     <SpeechAdd
-                                        key={speech._id}
-                                        id={speech._id}
-                                        title={speech.title}
-                                        author={speech.author}
+                                        id={sports.id}
+                                        key={sports.id}
+                                        title={sports.title}
+                                        author={sports.author}
+                                        synopsis={sports.synopsis}
                                     />
                                 ))}
                             </ul>
@@ -67,4 +67,4 @@ class Sports extends Component {
     }
 }
 
-export default Sports;
+export default SportsDB;
