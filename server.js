@@ -6,7 +6,9 @@ const PORT = process.env.PORT || 3001;
 const passport = require('./passportAuth');
 const routes = require("./routes");
 const session = require('express-session')
-const dbArray = require('./scripts/seededDatabase');
+const politicsDBArray = require('./scripts/seededDB.js/politicsSeedDB');
+const sportsDBArray = require('./scripts/seededDB.js/sportsSeedDB');
+const filmsDBArray = require('./scripts/seededDB.js/filmsSeedDB');
 const speechModel = require('./models/speech');
 const app = express();
 
@@ -46,9 +48,11 @@ app.use(routes);
 // checking array require
 // console.log(dbArray);
 
-speechModel.remove({})
+// speechModel.remove({})
 
-speechModel.create(dbArray).then(data =>{console.log(data)})
+speechModel.create(politicsDBArray).then(data =>{console.log(data)})
+speechModel.create(sportsDBArray).then(data =>{console.log(data)})
+speechModel.create(filmsDBArray).then(data =>{console.log(data)})
 
 // Initiating the API server
 app.listen(PORT, () => {

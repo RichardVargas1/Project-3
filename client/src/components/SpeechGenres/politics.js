@@ -56,6 +56,7 @@ class PoliticsDB extends Component {
                                         key={politics.id}
                                         title={politics.title}
                                         author={politics.author}
+                                        genre={politics.genre}
                                         synopsis={politics.synopsis}
                                     />
                                 ))}

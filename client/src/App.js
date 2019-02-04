@@ -11,15 +11,8 @@ import PoliticsGenre from "./components/SpeechGenres/politics";
 import SportsGenre from "./components/SpeechGenres/sports";
 import FilmsGenre from "./components/SpeechGenres/films";
 import Footer from "./components/Footer";
-// import SearchBar from './components/Search';
-// import youtubeSearch from 'youtube-api-search';
-// import VideoList from './components/video-list';
-// import VideoDetail from './components/video-detail'
 import axios from 'axios'
 import "./App.css";
-
-// import key from "./";
-// const API_KEY = 'AIzaSyDpkI-jTmCIWJ0-ZljHhNo3XiIFj4-OvPg';
 class App extends Component {
   constructor() {
     super()

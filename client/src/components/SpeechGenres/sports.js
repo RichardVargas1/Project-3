@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import axios from 'axios'; import SpeechAdd from '../Speech-Add/index';
 import "./style.css"
 
@@ -7,7 +7,7 @@ import "./style.css"
 class SportsDB extends Component {
 
     state = {
-        SportsDB: []
+        sportsDB: []
     }
 
     componentDidMount() {
