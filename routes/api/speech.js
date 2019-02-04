@@ -24,15 +24,15 @@ router.get("/all", (req,res) => {
 })
 
 router.get("/politics", (req,res) => {
-    Speech.find({genre: "politics"}).sort({date: -1}).then(results => res.json(results))
+    Speech.find({genre: "Politics"}).sort({date: -1}).then(results => res.json(results))
 })
 
 router.get("/sports", (req,res) => {
-    Speech.find({genre: "sports"}).sort({date: -1}).then(results => res.json(results))
+    Speech.find({genre: "Sports"}).sort({date: -1}).then(results => res.json(results))
 })
 
 router.get("/films", (req,res) => {
-    Speech.find({genre: "film"}).sort({date: -1}).then(results => res.json(results))
+    Speech.find({genre: "Films"}).sort({date: -1}).then(results => res.json(results))
 })
 
 router.get("/api/speech/:id", (req,res) => {

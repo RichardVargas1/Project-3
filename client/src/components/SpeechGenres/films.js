@@ -19,7 +19,6 @@ class FilmsDB extends Component {
         axios.get("/api/speech/films").then(res => {
             this.setState({ filmsDB: res.data })
         })
-        console.log(this.state.filmsDB)
     }
 
 
@@ -56,6 +55,7 @@ class FilmsDB extends Component {
                                     key={films.id}
                                     title={films.title}
                                     author={films.author}
+                                    genre={films.genre}
                                     synopsis={films.synopsis}
                                     />
                                 ))}

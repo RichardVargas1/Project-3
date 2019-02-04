@@ -50,6 +50,8 @@ app.use(routes);
 
 // speechModel.remove({})
 
+speechModel.collection.drop();
+
 speechModel.create(politicsDBArray).then(data =>{console.log(data)})
 speechModel.create(sportsDBArray).then(data =>{console.log(data)})
 speechModel.create(filmsDBArray).then(data =>{console.log(data)})

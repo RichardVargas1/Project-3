@@ -6,6 +6,7 @@ const AddSpeech = props => (
         <div className="card-body">
             <p className="card-text">{props.synopsis}</p>
             <p className="card-text">Author: <strong>{props.author}</strong></p>
+            <p className="card-text">Genre: <strong>{props.genre}</strong></p>
         </div>
     </li>
 )

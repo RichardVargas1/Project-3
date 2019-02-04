@@ -18,7 +18,6 @@ class SportsDB extends Component {
         axios.get("/api/speech/sports").then(res => {
             this.setState({ sportsDB: res.data })
         })
-        console.log(this.state.sportsDB)
     }
 
 
@@ -55,6 +54,7 @@ class SportsDB extends Component {
                                         key={sports.id}
                                         title={sports.title}
                                         author={sports.author}
+                                        genre={sports.genre}
                                         synopsis={sports.synopsis}
                                     />
                                 ))}

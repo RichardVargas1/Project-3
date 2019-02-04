@@ -19,11 +19,11 @@ class PoliticsDB extends Component {
         axios.get("/api/speech/politics").then(res => {
             this.setState({ politicsDB: res.data })
         })
-        console.log(this.state.politicsDB)
     }
 
 
     render() {
+        console.log(this.state.politicsDB)
         // const userLoggedIn = this.props.userLoggedIn;
         return (
             <Fragment>
@@ -50,7 +50,7 @@ class PoliticsDB extends Component {
                         </div> */}
                         <div className="posts col-md-12">
                             <ul>
-                                {this.state.politicsDB.map(politics => (
+                                {this.state.politicsDB.filter(state => state.genre == "Politics").map(politics => (
                                     <SpeechAdd
                                         id={politics.id}
                                         key={politics.id}
