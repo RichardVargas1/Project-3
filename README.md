@@ -20,7 +20,7 @@
 - Currently, you can search for any video on YouTube. Find a way to limit the search bar for the YouTube API. 
 
 * App Updates (As of 2/6/2019)
- - I have abondoned using the ESPN API. According to their website: (http://www.espn.com/static/apis/devcenter/blog/read/publicretirement.html), they will no longer be issuing public API keys.
+ - I have abandoned using the ESPN API. According to their website: (http://www.espn.com/static/apis/devcenter/blog/read/publicretirement.html), they will no longer be issuing public API keys.
  - I am able to communicate with YouTube however. That is definitely a plus.
  - App is fully functioning. Able to maneuver about as you please.
 
